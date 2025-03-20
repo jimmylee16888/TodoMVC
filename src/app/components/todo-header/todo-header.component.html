@@ -1,0 +1,6 @@
+<header class="header">
+  <h1>待辦事項</h1>
+  <input class="new-todo"
+  [(ngModel)]="todoInputModel"
+  [placeholder]="placeholder" autofocus (keyup.Enter)="add()">
+</header>

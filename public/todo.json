@@ -1,0 +1,23 @@
+[
+  {
+    "status": false,
+    "Thing": "First thing!",
+    "Editing": false
+  },
+  {
+    "status": false,
+    "Thing": "Second thing!",
+    "Editing": false
+  },
+  {
+    "status": true,
+    "Thing": "Third thing!",
+    "Editing": false
+  },
+  {
+    "status": true,
+    "Thing": "Fourth thing!",
+    "Editing": false
+  }
+]
+

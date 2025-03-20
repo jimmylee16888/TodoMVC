@@ -1,0 +1,19 @@
+
+<footer class="footer">
+  <span class="todo-count"><strong>{{ todoActive.length }}</strong> item left</span>
+  <ul class="filter">
+    <li>
+      <a [class.selected]="nowTodoStatusType === TodoStatusType.ALL" href="#/"
+         (click)="$event.preventDefault(); setTodoStatus(TodoStatusType.ALL)">ALL</a>
+    </li>
+    <li>
+      <a [class.selected]="nowTodoStatusType === TodoStatusType.Active" href="#/active"
+         (click)="$event.preventDefault(); setTodoStatus(TodoStatusType.Active)">Active</a>
+    </li>
+    <li>
+      <a [class.selected]="nowTodoStatusType === TodoStatusType.Completed" href="#/completed"
+         (click)="$event.preventDefault(); setTodoStatus(TodoStatusType.Completed)">Completed</a>
+    </li>
+  </ul>
+  <button *ngIf="ifCompletedZero()" class="clear-completed" (click)="clearCompleted()">Clear Completed</button>
+</footer>

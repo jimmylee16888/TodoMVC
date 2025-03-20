@@ -1,0 +1,31 @@
+<section class="main">
+  <!-- 全部標記區塊：包含全選的 checkbox 與標籤 -->
+  <div class="toggle-all">
+    <input id="toggle-all" class="toggle-all" type="checkbox" [checked]="toggleAllBtnState" (click)="toggleAll()">
+    <label for="toggle-all">標記全部為完成</label>
+  </div>
+  <!-- 待辦事項列表：使用 ngFor 迭代顯示目前篩選後的待辦事項 -->
+  <ul class="todo-list">
+    <!-- 每一個待辦事項項目的區塊 -->
+    <li *ngFor="let item of getNowTodoList; let i = index">
+        <input  type="checkbox" [checked]="item.status" (click)="clickCheck(item)">
+        <label (dblclick)="edit(item)" *ngIf="!item.Editing" [ngClass]="{'completed-label': item.status}">{{ item.Thing }}</label>
+        <!-- 當待辦事項處於編輯狀態 (item.Editing 為 true) 時，顯示輸入框以編輯待辦事項內容 -->
+        <input id="editInput-{{item.id}}"
+        [(ngModel)]="item.Thing"
+        *ngIf="item.Editing"
+        type="text" class="input-edit"
+        (keyup.enter)="update(item, ItemInput.value)"
+        (blur)="update(item, ItemInput.value)"
+        #ItemInput>
+
+        <!-- [(ngModel)] 雙向綁定，直接更新 item.Thing -->
+        <!--  #ItemInput 當前輸入框的參考變數 -->
+        <!-- (keyup.enter) 按下 Enter 鍵時，退出編輯模式 -->
+        <!-- (mouseenter)當滑鼠移入時自動聚焦此輸入框 -->
+        <!-- (blur) 當輸入框失焦時，退出編輯模式 -->
+        <!-- 刪除按鈕：當待辦事項未處於編輯狀態時顯示，點擊刪除該待辦事項 -->
+        <button *ngIf="!item.Editing" class="delete-button" (click)="delete(i)"></button>
+    </li>
+  </ul>
+</section>
